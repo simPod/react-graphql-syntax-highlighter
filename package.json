@@ -36,15 +36,6 @@
   },
   "gitHead": "eeeb02fe65b1f1859053a6036e6b6328e2b57a89",
   "homepage": "https://github.com/daniman/graphql-syntax-highlighter-react#readme",
-  "_id": "graphql-syntax-highlighter-react@0.0.17",
-  "_shasum": "5aca065735a69858fc7e8600880be79d8b298623",
-  "_from": "graphql-syntax-highlighter-react@0.0.17",
-  "_npmVersion": "2.15.8",
-  "_nodeVersion": "4.4.7",
-  "_npmUser": {
-    "name": "daniman",
-    "email": "daniman0808@gmail.com"
-  },
   "dist": {
     "shasum": "5aca065735a69858fc7e8600880be79d8b298623",
     "tarball": "https://registry.npmjs.org/graphql-syntax-highlighter-react/-/graphql-syntax-highlighter-react-0.0.17.tgz"
@@ -55,11 +46,6 @@
       "email": "daniman0808@gmail.com"
     }
   ],
-  "_npmOperationalInternal": {
-    "host": "packages-12-west.internal.npmjs.com",
-    "tmp": "tmp/graphql-syntax-highlighter-react-0.0.17.tgz_1473987198657_0.28812974668107927"
-  },
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/graphql-syntax-highlighter-react/-/graphql-syntax-highlighter-react-0.0.17.tgz",
   "readme": "ERROR: No README data found!"
 }
