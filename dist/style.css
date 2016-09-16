@@ -1,0 +1,44 @@
+.GraphqlCodeBlock pre {
+  background: transparent;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* colors copied from graphiql */
+.GraphqlCodeBlock span.comment {
+  color: #999999;
+}
+
+.GraphqlCodeBlock span.number {
+  color: #2882F9;
+}
+
+.GraphqlCodeBlock span.variable {
+  color: #397D13;
+}
+
+.GraphqlCodeBlock span.atom {
+  color: #CA9800;
+}
+
+.GraphqlCodeBlock span.attribute {
+  color: #8B2BB9;
+}
+
+.GraphqlCodeBlock span.punctuation {
+  color: #555555;
+}
+
+.GraphqlCodeBlock span.keyword {
+  color: #B11A04;
+}
+
+.GraphqlCodeBlock span.def {
+  color: #D2054E;
+}
+
+.GraphqlCodeBlock span.property {
+  color: #1F61A0;
+}
