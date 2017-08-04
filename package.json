@@ -1,6 +1,6 @@
 {
   "name": "graphql-syntax-highlighter-react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A React component for highlighting GraphQL syntax.",
   "main": "dist/index.js",
   "scripts": {
@@ -12,10 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/daniman/graphql-syntax-highlighter-react.git"
   },
-  "keywords": [
-    "graphql",
-    "react"
-  ],
+  "keywords": ["graphql", "react"],
   "author": {
     "name": "Danielle"
   },
@@ -31,7 +28,7 @@
     "babel-preset-react": "^6.11.1"
   },
   "peerDependencies": {
-    "react": "^15.3.1",
+    "react": "^15.3.1"
   },
   "dependencies": {
     "graphql": "^0.7.0"
