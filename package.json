@@ -30,8 +30,10 @@
     "babel-preset-es2015": "^6.13.2",
     "babel-preset-react": "^6.11.1"
   },
+  "peerDependencies": {
+    "react": "^15.3.1",
+  },
   "dependencies": {
-    "react": "15.3.1",
     "graphql": "^0.7.0"
   },
   "gitHead": "eeeb02fe65b1f1859053a6036e6b6328e2b57a89",
