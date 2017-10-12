@@ -47,10 +47,10 @@ function onlineParser(options) {
 }
 
 function getToken(stream, state, options) {
-  var LexRules = options.LexRules;
-  var ParseRules = options.ParseRules;
-  var eatWhitespace = options.eatWhitespace;
-  var editorConfig = options.editorConfig;
+  var LexRules = options.LexRules,
+      ParseRules = options.ParseRules,
+      eatWhitespace = options.eatWhitespace,
+      editorConfig = options.editorConfig;
 
   if (state.needsAdvance) {
     state.needsAdvance = false;

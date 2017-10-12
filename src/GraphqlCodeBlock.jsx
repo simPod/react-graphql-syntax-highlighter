@@ -1,6 +1,7 @@
 import { LexRules, ParseRules, isIgnored } from './utils/Rules.js';
 import runParser from './utils/runParser.js';
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { print, parse } from 'graphql';
 import './style.css';
 

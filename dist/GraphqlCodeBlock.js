@@ -16,6 +16,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _graphql = require('graphql');
 
 require('./style.css');
@@ -28,21 +32,21 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var GraphqlCodBlock = function (_Component) {
-  _inherits(GraphqlCodBlock, _Component);
+var GraphqlCodeBlock = function (_Component) {
+  _inherits(GraphqlCodeBlock, _Component);
 
-  function GraphqlCodBlock() {
-    _classCallCheck(this, GraphqlCodBlock);
+  function GraphqlCodeBlock() {
+    _classCallCheck(this, GraphqlCodeBlock);
 
-    return _possibleConstructorReturn(this, (GraphqlCodBlock.__proto__ || Object.getPrototypeOf(GraphqlCodBlock)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (GraphqlCodeBlock.__proto__ || Object.getPrototypeOf(GraphqlCodeBlock)).apply(this, arguments));
   }
 
-  _createClass(GraphqlCodBlock, [{
+  _createClass(GraphqlCodeBlock, [{
     key: 'render',
     value: function render() {
-      var _props = this.props;
-      var className = _props.className;
-      var queryBody = _props.queryBody;
+      var _props = this.props,
+          className = _props.className,
+          queryBody = _props.queryBody;
 
       var formatted = (0, _graphql.print)((0, _graphql.parse)(queryBody));
 
@@ -55,9 +59,9 @@ var GraphqlCodBlock = function (_Component) {
         LexRules: _Rules.LexRules,
         ParseRules: _Rules.ParseRules
       }, function (stream, state, style) {
-        var _sourceText = stream._sourceText;
-        var _start = stream._start;
-        var _pos = stream._pos;
+        var _sourceText = stream._sourceText,
+            _start = stream._start,
+            _pos = stream._pos;
 
         if (rowKeys[rowKeys.length - 1] !== _sourceText) {
           rowKeys.push(_sourceText);
@@ -88,11 +92,11 @@ var GraphqlCodBlock = function (_Component) {
     }
   }]);
 
-  return GraphqlCodBlock;
+  return GraphqlCodeBlock;
 }(_react.Component);
 
-GraphqlCodBlock.propTypes = {
-  queryBody: _react.PropTypes.string,
-  className: _react.PropTypes.string
+GraphqlCodeBlock.propTypes = {
+  queryBody: _propTypes2.default.string,
+  className: _propTypes2.default.string
 };
-exports.default = GraphqlCodBlock;
+exports.default = GraphqlCodeBlock;
