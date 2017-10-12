@@ -12,7 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/daniman/graphql-syntax-highlighter-react.git"
   },
-  "keywords": ["graphql", "react"],
+  "keywords": [
+    "graphql",
+    "react"
+  ],
   "author": {
     "name": "Danielle"
   },
@@ -28,10 +31,11 @@
     "babel-preset-react": "^6.11.1"
   },
   "peerDependencies": {
-    "react": "^15.3.1"
+    "react": "^15.3.1 || ^16.0.0"
   },
   "dependencies": {
-    "graphql": "^0.7.0"
+    "graphql": "^0.7.0",
+    "prop-types": "^15.6.0"
   },
   "gitHead": "eeeb02fe65b1f1859053a6036e6b6328e2b57a89",
   "homepage": "https://github.com/daniman/graphql-syntax-highlighter-react#readme",

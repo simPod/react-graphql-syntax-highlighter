@@ -11,7 +11,7 @@ var _RuleHelpers = require('./RuleHelpers');
  * Whitespace tokens defined in GraphQL spec.
  */
 var isIgnored = exports.isIgnored = function isIgnored(ch) {
-  return ch === ' ' || ch === '\t' || ch === ',' || ch === '\n' || ch === '\r' || ch === '﻿';
+  return ch === ' ' || ch === '\t' || ch === ',' || ch === '\n' || ch === '\r' || ch === '\uFEFF';
 };
 
 /**
