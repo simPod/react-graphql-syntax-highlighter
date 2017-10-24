@@ -2,7 +2,8 @@ import { LexRules, ParseRules, isIgnored } from './utils/Rules.js';
 import runParser from './utils/runParser.js';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { print, parse } from 'graphql';
+import { print } from 'graphql/language/printer';
+import { parse } from 'graphql/language/parser';
 import './style.css';
 
 export default class GraphqlCodeBlock extends Component {
