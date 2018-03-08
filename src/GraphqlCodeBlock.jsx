@@ -18,7 +18,7 @@ export default class GraphqlCodeBlock extends Component {
     let formatted;
     try {
       formatted = print(parse(queryBody));
-    } catch {
+    } catch (e) {
       return (<div className={className}>Could not parse graphQL query</div>);
     }
       
