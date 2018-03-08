@@ -57,8 +57,8 @@ var GraphqlCodeBlock = function (_Component) {
       } catch (e) {
         return _react2.default.createElement(
           'div',
-          { className: className },
-          'Could not parse graphQL query'
+          null,
+          queryBody
         );
       }
 
