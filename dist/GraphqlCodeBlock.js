@@ -20,7 +20,9 @@ var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _graphql = require('graphql');
+var _printer = require('graphql/language/printer');
+
+var _parser = require('graphql/language/parser');
 
 require('./style.css');
 
@@ -48,7 +50,17 @@ var GraphqlCodeBlock = function (_Component) {
           className = _props.className,
           queryBody = _props.queryBody;
 
-      var formatted = (0, _graphql.print)((0, _graphql.parse)(queryBody));
+
+      var formatted = void 0;
+      try {
+        formatted = (0, _printer.print)((0, _parser.parse)(queryBody));
+      } catch (e) {
+        return _react2.default.createElement(
+          'div',
+          { className: className },
+          'Could not parse graphQL query'
+        );
+      }
 
       var highlighted = [];
       var rowKeys = [];
