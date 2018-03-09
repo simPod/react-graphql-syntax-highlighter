@@ -28,9 +28,9 @@ export default class GraphqlCodeBlock extends Component {
       eatWhitespace: stream => stream.eatWhile(isIgnored),
       LexRules,
       ParseRules,
-    }, (stream, state, style) => {
+    }, (stream, state, style, rowIndex) => {
       const { _sourceText, _start, _pos } = stream;
-      if (rowKeys[rowKeys.length-1] !== _sourceText) {
+      if (rowKeys.length-1 !== rowIndex) {
         rowKeys.push(_sourceText);
         highlighted.push([]);
       }

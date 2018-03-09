@@ -1,10 +1,11 @@
 /**
- *  Copyright (c) 2015, Facebook, Inc.
+ *  Copyright (c) Facebook, Inc.
  *  All rights reserved.
  *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
+ *  This source code is licensed under the license found in the
+ *  LICENSE file in the root directory of this source tree.
+ *
+ *  @flow
  */
 
 /**
@@ -19,61 +20,61 @@
  */
 
 export default class CharacterStream {
-  constructor(sourceText: string): void {
+  _start;
+  _pos;
+  _sourceText;
+
+  constructor(sourceText) {
     this._start = 0;
     this._pos = 0;
     this._sourceText = sourceText;
   }
 
-  getStartOfToken(): Number {
-    return this._start;
-  }
+  getStartOfToken = () => this._start;
 
-  getCurrentPosition(): Number {
-    return this._pos;
-  }
+  getCurrentPosition = () => this._pos;
 
-  _testNextCharacter(pattern: mixed) {
-    let character = this._sourceText.charAt(this._pos);
+  _testNextCharacter(pattern) {
+    const character = this._sourceText.charAt(this._pos);
     let isMatched = false;
     if (typeof pattern === 'string') {
       isMatched = character === pattern;
     } else {
-      isMatched = pattern.test ? pattern.test(character) : pattern(character);
+      isMatched =
+        pattern instanceof RegExp
+          ? pattern.test(character)
+          : pattern(character);
     }
     return isMatched;
   }
 
-  eol(): boolean {
-    return this._sourceText.length === this._pos;
-  }
+  eol = () => this._sourceText.length === this._pos;
 
-  sol(): boolean {
-    return this._pos === 0;
-  }
+  sol = () => this._pos === 0;
 
-  peek(): string | void {
-    return Boolean(this._sourceText.charAt(this._pos)) ?
-      this._sourceText.charAt(this._pos) : null;
-  }
+  peek = () => {
+    return this._sourceText.charAt(this._pos)
+      ? this._sourceText.charAt(this._pos)
+      : null;
+  };
 
-  next(): string {
+  next = () => {
     const char = this._sourceText.charAt(this._pos);
-    this._pos ++;
+    this._pos++;
     return char;
-  }
+  };
 
-  eat(pattern: mixed): string | void {
+  eat = (pattern) => {
     const isMatched = this._testNextCharacter(pattern);
     if (isMatched) {
       this._start = this._pos;
-      this._pos ++;
+      this._pos++;
       return this._sourceText.charAt(this._pos - 1);
     }
     return undefined;
-  }
+  };
 
-  eatWhile(match: mixed): boolean {
+  eatWhile = (match) => {
     let isMatched = this._testNextCharacter(match);
     let didEat = false;
 
@@ -84,76 +85,74 @@ export default class CharacterStream {
     }
 
     while (isMatched) {
-      this._pos ++;
+      this._pos++;
       isMatched = this._testNextCharacter(match);
       didEat = true;
     }
 
     return didEat;
-  }
+  };
 
-  eatSpace(): boolean {
-    return this.eatWhile(/[\s\u00a0]/);
-  }
+  eatSpace = () => this.eatWhile(/[\s\u00a0]/);
 
-  skipToEnd(): void {
+  skipToEnd = () => {
     this._pos = this._sourceText.length;
-  }
+  };
 
-  skipTo(position): void {
+  skipTo = (position) => {
     this._pos = position;
-  }
+  };
 
-  match(
-    pattern: mixed,
-    consume: ?boolean = true,
-    caseFold: boolean
-  ): Array<string> | boolean {
+  match = (
+    pattern,
+    consume = true,
+    caseFold = false,
+  ) => {
     let token = null;
     let match = null;
 
-    switch (typeof pattern) {
-      case 'string':
-        const regex = new RegExp(pattern, (caseFold ? 'i' : ''));
-        match = regex.test(this._sourceText.substr(this._pos, pattern.length));
-        token = pattern;
-        break;
-      case 'object': // RegExp
-      case 'function':
-        match = this._sourceText.slice(this._pos).match(pattern);
-        token = match && match[0];
-        break;
+    if (typeof pattern === 'string') {
+      const regex = new RegExp(pattern, caseFold ? 'i' : 'g');
+      match = regex.test(this._sourceText.substr(this._pos, pattern.length));
+      token = pattern;
+    } else if (pattern instanceof RegExp) {
+      match = this._sourceText.slice(this._pos).match(pattern);
+      token = match && match[0];
     }
 
-    if (
-      match && (
+    if (match != null) {
+      if (
         typeof pattern === 'string' ||
-        match.index === 0
-      )
-    ) {
-      if (consume) {
-        this._start = this._pos;
-        this._pos += token.length;
+        (match instanceof Array &&
+          // String.match returns 'index' property, which flow fails to detect
+          // for some reason. The below is a workaround, but an easier solution
+          // is just checking if `match.index === 0`
+          this._sourceText.startsWith(match[0], this._pos))
+      ) {
+        if (consume) {
+          this._start = this._pos;
+          if (token && token.length) {
+            this._pos += token.length;
+          }
+        }
+        return match;
       }
-      return match;
     }
 
     // No match available.
     return false;
-  }
+  };
 
-  backUp(num: number): void {
+  backUp = (num) => {
     this._pos -= num;
-  }
+  };
 
-  column(): number {
-    return this._pos;
-  }
+  column = () => this._pos;
 
-  indentation(): number {
+  indentation = () => {
     const match = this._sourceText.match(/\s*/);
     let indent = 0;
-    if (match && match.index === 0) {
+    if (match && match.length === 0) {
       const whitespaces = match[0];
       let pos = 0;
       while (whitespaces.length > pos) {
@@ -167,9 +166,7 @@ export default class CharacterStream {
     }
 
     return indent;
-  }
+  };
 
-  current(): string {
-    return this._sourceText.slice(this._start, this._pos);
-  }
+  current = () => this._sourceText.slice(this._start, this._pos);
 }

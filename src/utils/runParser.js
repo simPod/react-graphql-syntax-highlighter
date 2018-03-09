@@ -15,11 +15,11 @@ export default function runParser(sourceText, parserOptions, callbackFn) {
   const state = parser.startState();
   const lines = sourceText.split('\n');
 
-  lines.forEach(line => {
+  lines.forEach((line, i) => {
     const stream = new CharacterStream(line);
     while (!stream.eol()) {
       const style = parser.token(stream, state);
-      callbackFn(stream, state, style);
+      callbackFn(stream, state, style, i);
     }
   });
 }

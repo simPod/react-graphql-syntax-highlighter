@@ -70,12 +70,12 @@ var GraphqlCodeBlock = function (_Component) {
         },
         LexRules: _Rules.LexRules,
         ParseRules: _Rules.ParseRules
-      }, function (stream, state, style) {
+      }, function (stream, state, style, rowIndex) {
         var _sourceText = stream._sourceText,
             _start = stream._start,
             _pos = stream._pos;
 
-        if (rowKeys[rowKeys.length - 1] !== _sourceText) {
+        if (rowKeys.length - 1 !== rowIndex) {
           rowKeys.push(_sourceText);
           highlighted.push([]);
         }

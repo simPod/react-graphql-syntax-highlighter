@@ -29,11 +29,11 @@ function runParser(sourceText, parserOptions, callbackFn) {
   var state = parser.startState();
   var lines = sourceText.split('\n');
 
-  lines.forEach(function (line) {
+  lines.forEach(function (line, i) {
     var stream = new _CharacterStream2.default(line);
     while (!stream.eol()) {
       var style = parser.token(stream, state);
-      callbackFn(stream, state, style);
+      callbackFn(stream, state, style, i);
     }
   });
 }
