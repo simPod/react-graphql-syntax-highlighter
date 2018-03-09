@@ -18,6 +18,19 @@ exports.p = p;
  */
 // These functions help build matching rules for ParseRules.
 
+/**
+ *  Copyright (c) Facebook, Inc.
+ *  All rights reserved.
+ *
+ *  This source code is licensed under the license found in the
+ *  LICENSE file in the root directory of this source tree.
+ *
+ *  
+ */
+
+// These functions help build matching rules for ParseRules.
+
+
 // An optional rule.
 function opt(ofRule) {
   return { ofRule: ofRule };
@@ -32,8 +45,12 @@ function list(ofRule, separator) {
 function butNot(rule, exclusions) {
   var ruleMatch = rule.match;
   rule.match = function (token) {
-    return ruleMatch(token) && exclusions.every(function (exclusion) {
-      return !exclusion.match(token);
+    var check = false;
+    if (ruleMatch) {
+      check = ruleMatch(token);
+    }
+    return check && exclusions.every(function (exclusion) {
+      return exclusion.match && !exclusion.match(token);
     });
   };
   return rule;

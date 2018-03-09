@@ -19,7 +19,7 @@ export default class GraphqlCodeBlock extends Component {
     try {
       formatted = print(parse(queryBody));
     } catch (e) {
-      return <div>{queryBody}</div>;
+    return <div>[PARSE ERROR] {queryBody}</div>;
     }
 
     const highlighted = [];

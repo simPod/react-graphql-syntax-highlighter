@@ -58,6 +58,7 @@ var GraphqlCodeBlock = function (_Component) {
         return _react2.default.createElement(
           'div',
           null,
+          '[PARSE ERROR] ',
           queryBody
         );
       }
