@@ -17,9 +17,11 @@ export default function runParser(sourceText, parserOptions, callbackFn) {
 
   lines.forEach((line, i) => {
     const stream = new CharacterStream(line);
+    let newRow = true;
     while (!stream.eol()) {
       const style = parser.token(stream, state);
-      callbackFn(stream, state, style, i);
+      callbackFn(stream, state, style, i, newRow);
+      newRow = false;
     }
   });
 }

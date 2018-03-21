@@ -31,9 +31,11 @@ function runParser(sourceText, parserOptions, callbackFn) {
 
   lines.forEach(function (line, i) {
     var stream = new _CharacterStream2.default(line);
+    var newRow = true;
     while (!stream.eol()) {
       var style = parser.token(stream, state);
-      callbackFn(stream, state, style, i);
+      callbackFn(stream, state, style, i, newRow);
+      newRow = false;
     }
   });
 }
