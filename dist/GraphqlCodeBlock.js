@@ -76,6 +76,7 @@ var GraphqlCodeBlock = function (_Component) {
             _start = stream._start,
             _pos = stream._pos;
 
+
         if (newRow) {
           rowKeys.push(_sourceText);
           highlighted.push([]);
