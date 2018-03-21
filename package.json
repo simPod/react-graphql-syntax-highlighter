@@ -1,6 +1,6 @@
 {
   "name": "graphql-syntax-highlighter-react",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "A React component for highlighting GraphQL syntax.",
   "main": "dist/index.js",
   "scripts": {
