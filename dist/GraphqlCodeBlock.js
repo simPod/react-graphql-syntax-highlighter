@@ -6,12 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Rules = require('./utils/Rules.js');
-
-var _runParser = require('./utils/runParser.js');
-
-var _runParser2 = _interopRequireDefault(_runParser);
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -23,6 +17,10 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 var _printer = require('graphql/language/printer');
 
 var _parser = require('graphql/language/parser');
+
+var _runParser = require('./runParser');
+
+var _runParser2 = _interopRequireDefault(_runParser);
 
 require('./style.css');
 
@@ -47,7 +45,8 @@ var GraphqlCodeBlock = function (_Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          className = _props.className,
+          _props$className = _props.className,
+          className = _props$className === undefined ? "GraphqlCodeBlock" : _props$className,
           queryBody = _props.queryBody;
 
 
@@ -55,23 +54,17 @@ var GraphqlCodeBlock = function (_Component) {
       try {
         formatted = (0, _printer.print)((0, _parser.parse)(queryBody));
       } catch (e) {
+        console.error(e);
         return _react2.default.createElement(
-          'div',
-          null,
-          '[PARSE ERROR] ',
+          'pre',
+          { className: className + ' error' },
           queryBody
         );
       }
 
       var highlighted = [];
       var rowKeys = [];
-      (0, _runParser2.default)(formatted, {
-        eatWhitespace: function eatWhitespace(stream) {
-          return stream.eatWhile(_Rules.isIgnored);
-        },
-        LexRules: _Rules.LexRules,
-        ParseRules: _Rules.ParseRules
-      }, function (stream, state, style, rowIndex, newRow) {
+      (0, _runParser2.default)(formatted, function (stream, state, style, rowIndex, newRow) {
         var _sourceText = stream._sourceText,
             _start = stream._start,
             _pos = stream._pos;

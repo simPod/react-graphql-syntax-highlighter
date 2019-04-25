@@ -1,9 +1,8 @@
-import { LexRules, ParseRules, isIgnored } from './utils/Rules.js';
-import runParser from './utils/runParser.js';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { print } from 'graphql/language/printer';
 import { parse } from 'graphql/language/parser';
+import runParser from './runParser';
 import './style.css';
 
 export default class GraphqlCodeBlock extends Component {
@@ -13,22 +12,19 @@ export default class GraphqlCodeBlock extends Component {
   }
 
   render() {
-    const { className, queryBody } = this.props;
+    const { className = "GraphqlCodeBlock", queryBody } = this.props;
 
     let formatted;
     try {
       formatted = print(parse(queryBody));
     } catch (e) {
-    return <div>[PARSE ERROR] {queryBody}</div>;
+      console.error(e);
+      return <pre className={`${className} error`}>{queryBody}</pre>;
     }
 
     const highlighted = [];
     const rowKeys = [];
-    runParser(formatted, {
-      eatWhitespace: stream => stream.eatWhile(isIgnored),
-      LexRules,
-      ParseRules,
-    }, (stream, state, style, rowIndex, newRow) => {
+    runParser(formatted, (stream, state, style, rowIndex, newRow) => {
       const { _sourceText, _start, _pos } = stream;
 
       if (newRow) {
@@ -37,7 +33,7 @@ export default class GraphqlCodeBlock extends Component {
       }
       const substr = _sourceText.substring(_start, _pos);
       highlighted[highlighted.length-1].push(
-        <span key={`${rowKeys.length}-${_start}-${_pos}`} className={style}>{substr}</span>
+          <span key={`${rowKeys.length}-${_start}-${_pos}`} className={style}>{substr}</span>
       );
     });
 
@@ -47,7 +43,7 @@ export default class GraphqlCodeBlock extends Component {
     });
 
     return (
-      <div className={className}>{body}</div>
+        <div className={className}>{body}</div>
     );
   }
 }
