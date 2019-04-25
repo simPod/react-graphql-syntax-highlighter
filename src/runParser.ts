@@ -7,19 +7,20 @@
  *  of patent rights can be found in the PATENTS file in the same directory.
  */
 
+// @ts-ignore
 import { CharacterStream, onlineParser } from "graphql-language-service-parser";
 
-export default function runParser(sourceText, callbackFn) {
+export default function runParser(src: string, callback: (stream: any, state: any, style: string, rowIndex: number, newRow: boolean) => void) {
   const parser = onlineParser();
   const state = parser.startState();
-  const lines = sourceText.split('\n');
+  const lines = src.split('\n');
 
   lines.forEach((line, i) => {
     const stream = new CharacterStream(line);
     let newRow = true;
     while (!stream.eol()) {
       const style = parser.token(stream, state);
-      callbackFn(stream, state, style, i, newRow);
+      callback(stream, state, style, i, newRow);
       newRow = false;
     }
   });
