@@ -4,16 +4,16 @@
   },
   "bundleDependencies": false,
   "dependencies": {
-    "graphql": "^14.2.1",
-    "graphql-language-service-parser": "^1.2.2",
-    "prop-types": "^15.6.0"
+    "graphql": "^14.6.0",
+    "graphql-language-service-parser": "^1.5.2",
+    "prop-types": "^15.7.2"
   },
   "deprecated": false,
   "description": "A React component for highlighting GraphQL syntax.",
   "devDependencies": {
-    "@types/react": "^16.8.14",
-    "react": "^16.8.6",
-    "typescript": "^3.4.5"
+    "@types/react": "^16.9.25",
+    "react": "^16.13.1",
+    "typescript": "^3.8.3"
   },
   "directories": {},
   "homepage": "https://github.com/dehypnosis/graphql-syntax-highlighter-react#readme",
