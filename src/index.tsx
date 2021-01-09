@@ -8,6 +8,7 @@ import { parse } from 'graphql/language/parser';
 import './style.css';
 
 type Props = { className?: string, src: string };
+
 export default class GraphQLCodeBlock extends Component<Props> {
   static propTypes = {
     src: PropTypes.string.isRequired,

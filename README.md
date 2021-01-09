@@ -1,7 +1,7 @@
 A React component for GraphQL syntax highlighting.
 
 Example usage:
-```import { GraphqlCodeBlock } from 'graphql-syntax-highlighter-react';```
+```import { GraphqlCodeBlock } from 'react-graphql-syntax-highlighter';```
 
 ```
 <GraphqlCodeBlock

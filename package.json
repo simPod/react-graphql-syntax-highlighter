@@ -1,6 +1,6 @@
 {
   "bugs": {
-    "url": "https://github.com/dehypnosis/graphql-syntax-highlighter-react/issues"
+    "url": "https://github.com/simPod/react-graphql-syntax-highlighter/issues"
   },
   "bundleDependencies": false,
   "dependencies": {
@@ -16,33 +16,20 @@
     "typescript": "^3.8.3"
   },
   "directories": {},
-  "homepage": "https://github.com/dehypnosis/graphql-syntax-highlighter-react#readme",
+  "homepage": "https://github.com/simPod/react-graphql-syntax-highlighter#readme",
   "keywords": [
     "graphql",
     "react"
   ],
   "license": "MIT",
   "main": "dist/index.js",
-  "maintainers": [
-    {
-      "name": "daniman",
-      "email": "daniman0808@gmail.com"
-    },
-    {
-      "name": "dehypnosis",
-      "email": "dehypnosis@gmail.com"
-    }
-  ],
-  "author": {
-    "name": "Danielle"
-  },
-  "name": "graphql-syntax-highlighter-react",
+  "name": "react-graphql-syntax-highlighter",
   "peerDependencies": {
     "react": "^15.3.1 || ^16.0.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dehypnosis/graphql-syntax-highlighter-react.git"
+    "url": "git+https://github.com/simPod/react-graphql-syntax-highlighter.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
