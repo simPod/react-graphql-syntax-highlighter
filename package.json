@@ -1,41 +1,58 @@
 {
-  "bugs": {
-    "url": "https://github.com/simPod/react-graphql-syntax-highlighter/issues"
-  },
-  "bundleDependencies": false,
-  "dependencies": {
-    "graphql": "^14.6.0",
-    "graphql-language-service-parser": "^1.5.2",
-    "prop-types": "^15.7.2"
-  },
-  "deprecated": false,
-  "description": "A React component for highlighting GraphQL syntax.",
-  "devDependencies": {
-    "@types/react": "^16.9.25",
-    "react": "^16.13.1",
-    "typescript": "^3.8.3"
-  },
-  "directories": {},
-  "homepage": "https://github.com/simPod/react-graphql-syntax-highlighter#readme",
-  "keywords": [
-    "graphql",
-    "react"
-  ],
-  "license": "MIT",
-  "main": "dist/index.js",
   "name": "react-graphql-syntax-highlighter",
-  "peerDependencies": {
-    "react": "^15.3.1 || ^16.0.0"
-  },
+  "license": "MIT",
+  "version": "0.0.1",
+  "description": "A React component for highlighting GraphQL syntax.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simPod/react-graphql-syntax-highlighter.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc -w -p .",
-    "build": "tsc -p .",
-    "prepublish": "npm run build"
+    "build": "tsc --project tsconfig.json",
+    "prerelease": "yarn run build && cp src/style.css dist/",
+    "test": "jest --no-watchman --passWithNoTests",
+    "lint": "eslint --ext .ts,.tsx ."
   },
-  "version": "14.2.1"
+  "keywords": [
+    "graphql",
+    "react",
+    "gql"
+  ],
+  "bugs": {
+    "url": "https://github.com/simPod/react-graphql-syntax-highlighter/issues"
+  },
+  "homepage": "https://github.com/simPod/react-graphql-syntax-highlighter#readme",
+  "peerDependencies": {
+    "react": "^16.0.0 || ^17.0.0"
+  },
+  "dependencies": {
+    "graphql": "^15.4.0",
+    "graphql-language-service-parser": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "eslint": "^7.17.0",
+    "graphql-language-service-types": "^1.8.0",
+    "jest": "^26.6.3",
+    "react": "^17.0.1",
+    "typescript": "^4.1.3"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*"
+  ],
+  "typescript": {
+    "definition": "dist/index.d.ts"
+  },
+  "buildOptions": {
+    "input": "./src/index.ts"
+  },
+  "publishConfig": {
+    "directory": "dist",
+    "access": "public"
+  }
 }

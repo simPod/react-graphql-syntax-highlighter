@@ -1,11 +1,11 @@
 A React component for GraphQL syntax highlighting.
 
 Example usage:
-```import { GraphqlCodeBlock } from 'react-graphql-syntax-highlighter';```
+```import { GraphQLCodeBlock } from 'react-graphql-syntax-highlighter';```
 
 ```
 <GraphqlCodeBlock
-  className="GraphqlCodeBlock"
+  className="GraphQLCodeBlock"
   queryBody="query getData($eventId: Int!) {event(id: $eventId) {name,... eventFields ... on Event{attendees(first: 5)}}}"
 />
 ```
