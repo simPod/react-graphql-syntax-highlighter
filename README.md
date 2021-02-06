@@ -1,13 +1,24 @@
-A React component for GraphQL syntax highlighting.
+# GraphQL syntax highlighting React component
 
-Example usage:
-```import { GraphQLCodeBlock } from 'react-graphql-syntax-highlighter';```
+## Installation
 
-```
-<GraphqlCodeBlock
-  className="GraphQLCodeBlock"
-  queryBody="query getData($eventId: Int!) {event(id: $eventId) {name,... eventFields ... on Event{attendees(first: 5)}}}"
-/>
+```bash
+yarn add react-graphql-syntax-highlighter
 ```
 
-The components only takes two props: `className` and `queryBody`, `queryBody` being a graphql query string (unformatted ok). If you add the class `GraphqlCodeBlock`, you will get some default css. Else, you can write your own css for highlighting certain syntax.
+## Example usage
+```tsx
+import { GraphQLCodeBlock } from 'react-graphql-syntax-highlighter';
+import 'react-graphql-syntax-highlighter/dist/style.css';
+import React from 'react';
+
+interface Props {
+  code: string;
+}
+
+export const GraphqlCodeBlock: React.FC<Props> = ({ code }) => (
+  <GraphQLCodeBlock src={code} />
+);
+```
+
+The components only takes two props: `className` and `code`. `code` is a graphql query string.
