@@ -5,14 +5,14 @@ import { runParser } from './runParser';
 
 type Props = { className?: string, src: string };
 
-export const GraphQLCodeBlock: React.FC<Props> = ({ className = "GraphQLCodeBlock", src }) => {
+export const GraphQLCodeBlock: React.FC<Props> = ({ className, src }) => {
   let formatted;
   try {
     formatted = print(parse(src));
   } catch (e) {
     // eslint-disable-next-line no-console
     console.error(e);
-    return <pre className={`${className} error`}>{src}</pre>;
+    return <pre className={`${className ?? ''} GraphQLCodeBlock error`}>{src}</pre>;
   }
 
   const highlighted: any[] = [];
@@ -30,7 +30,7 @@ export const GraphQLCodeBlock: React.FC<Props> = ({ className = "GraphQLCodeBloc
   });
 
   return (
-    <div className={className}>{
+    <div className={`${className ?? ''} GraphQLCodeBlock`}>{
       highlighted.map((row, index) => {
         return (<pre key={`query-row-${index}`}>{row}</pre>);
       })
