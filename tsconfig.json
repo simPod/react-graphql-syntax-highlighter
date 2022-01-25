@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "isolatedModules": true,
     "incremental": true,
     "baseUrl": ".",
     "outDir": "dist",
@@ -14,7 +17,6 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "sourceMap": true,
-    "declaration": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
     "noImplicitReturns": true,

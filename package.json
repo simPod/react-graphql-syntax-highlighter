@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.json",
+    "build-dist": "babel ./src --ignore test --out-dir ./dist --extensions '.ts,.tsx' && cp src/style.css dist/ && yarn run build",
     "prerelease": "yarn run build && cp src/style.css dist/",
     "test": "jest --no-watchman --passWithNoTests",
     "lint": "eslint --ext .ts,.tsx ."
@@ -30,6 +31,11 @@
     "graphql-language-service-parser": "^1.9.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.12",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^26.0.24",
     "@types/react": "^17.0.14",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
@@ -41,12 +47,6 @@
     "typescript": "^4.3.5"
   },
   "main": "dist/index.js",
-  "files": [
-    "dist/**/*"
-  ],
-  "typescript": {
-    "definition": "dist/index.d.ts"
-  },
   "buildOptions": {
     "input": "./src/index.ts"
   },
