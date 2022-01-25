@@ -1,7 +1,7 @@
 {
   "name": "react-graphql-syntax-highlighter",
   "license": "MIT",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React component for highlighting GraphQL syntax.",
   "repository": {
     "type": "git",
