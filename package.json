@@ -21,11 +21,6 @@
   "bugs": {
     "url": "https://github.com/simPod/react-graphql-syntax-highlighter/issues"
   },
-  "type": "module",
-  "exports": {
-    ".": "./dist/index.js",
-    "./style.css": "./dist/style.css"
-  },
   "homepage": "https://github.com/simPod/react-graphql-syntax-highlighter#readme",
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0"
