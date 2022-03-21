@@ -53,5 +53,6 @@
   "publishConfig": {
     "directory": "dist",
     "access": "public"
-  }
+  },
+  "types": "./dist/index.d.ts"
 }
