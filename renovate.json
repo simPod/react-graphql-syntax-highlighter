@@ -2,5 +2,12 @@
   "extends": [
     "github>simPod/renovatebot-presets:ts-lib"
   ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["eslint"],
+      "groupName": "eslint packages",
+      "groupSlug": "eslint"
+    }
+  ],
   "includeForks": true
 }
