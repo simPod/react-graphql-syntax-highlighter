@@ -27,7 +27,7 @@
     "react": "^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "graphql": "^15.5.1",
+    "graphql": "^16.0.0",
     "graphql-language-service-parser": "^1.9.2"
   },
   "devDependencies": {
