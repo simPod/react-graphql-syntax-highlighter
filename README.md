@@ -9,16 +9,11 @@ yarn add react-graphql-syntax-highlighter
 ## Example usage
 ```tsx
 import { GraphQLCodeBlock } from 'react-graphql-syntax-highlighter';
-import 'react-graphql-syntax-highlighter/dist/style.css';
-import React from 'react';
+import 'react-graphql-syntax-highlighter/style.css';
 
-interface Props {
-  code: string;
-}
-
-export const GraphqlCodeBlock: React.FC<Props> = ({ code }) => (
+const MyComponent = ({ code }: { code: string }) => (
   <GraphQLCodeBlock src={code} />
 );
 ```
 
-The components only takes two props: `className` and `code`. `code` is a graphql query string.
+The component takes two props: `className` and `src`. `src` is a GraphQL query string.

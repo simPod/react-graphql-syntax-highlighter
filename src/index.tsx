@@ -1,11 +1,10 @@
-import { parse } from 'graphql/language/parser';
-import { print } from 'graphql/language/printer';
-import React from 'react';
+import { parse, print } from 'graphql';
+import type { ReactElement } from 'react';
 import { runParser } from './runParser';
 
-type Props = { className?: string, src: string };
+type Props = { className?: string; src: string };
 
-export const GraphQLCodeBlock: React.FC<Props> = ({ className, src }) => {
+export const GraphQLCodeBlock = ({ className, src }: Props) => {
   let formatted;
   try {
     formatted = print(parse(src));
@@ -15,17 +14,18 @@ export const GraphQLCodeBlock: React.FC<Props> = ({ className, src }) => {
     return <pre className={`${className ?? ''} GraphQLCodeBlock error`}>{src}</pre>;
   }
 
-  const highlighted: any[] = [];
-  const rowKeys: any[] = [];
-  runParser(formatted, (stream: any, state: any, style: string, rowIndex: number, newRow: boolean) => {
-    const { _sourceText, _start, _pos } = stream;
+  const highlighted: ReactElement[][] = [];
+  const rowKeys: string[] = [];
+  runParser(formatted, (stream, _state, style, _rowIndex, newRow) => {
+    const current = stream.current();
+    const start = stream.getStartOfToken();
+    const pos = stream.getCurrentPosition();
     if (newRow) {
-      rowKeys.push(_sourceText);
+      rowKeys.push(current);
       highlighted.push([]);
     }
-    const substr = _sourceText.substring(_start, _pos);
     highlighted[highlighted.length - 1].push(
-      <span key={`${rowKeys.length}-${_start}-${_pos}`} className={style}>{substr}</span>
+      <span key={`${rowKeys.length}-${start}-${pos}`} className={style}>{current}</span>
     );
   });
 
