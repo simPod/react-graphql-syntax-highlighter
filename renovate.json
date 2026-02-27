@@ -4,7 +4,7 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["eslint"],
+      "matchPackagePatterns": ["eslint", "typescript-eslint"],
       "groupName": "eslint packages",
       "groupSlug": "eslint"
     }

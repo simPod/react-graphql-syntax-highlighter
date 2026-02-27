@@ -1,5 +1,5 @@
-import { CharacterStream, CharacterStreamInterface, onlineParser } from 'graphql-language-service-parser';
-import { State } from 'graphql-language-service-parser/dist/types';
+import { CharacterStream, onlineParser } from 'graphql-language-service';
+import type { CharacterStreamInterface, State } from 'graphql-language-service';
 
 export const runParser = (
   src: string,
@@ -12,7 +12,7 @@ export const runParser = (
   lines.forEach((line, i) => {
     const stream = new CharacterStream(line);
     let newRow = true;
-    while (! stream.eol()) {
+    while (!stream.eol()) {
       const style = parser.token(stream, state);
       callback(stream, state, style, i, newRow);
       newRow = false;
