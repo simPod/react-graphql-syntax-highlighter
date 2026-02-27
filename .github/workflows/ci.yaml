@@ -18,7 +18,7 @@ jobs:
                 node_version: [20, 22, 24]
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
             - name: Enable Corepack
               run: corepack enable
             - name: Use Node ${{matrix.node_version}}
