@@ -1894,18 +1894,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-language-service@npm:^5.2.0":
-  version: 5.5.0
-  resolution: "graphql-language-service@npm:5.5.0"
+"graphql-language-service@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "graphql-language-service@npm:6.0.1"
   dependencies:
     debounce-promise: "npm:^3.1.2"
-    nullthrows: "npm:^1.0.0"
-    vscode-languageserver-types: "npm:^3.17.1"
+    vscode-languageserver-types: "npm:^3.18.5"
   peerDependencies:
-    graphql: ^15.5.0 || ^16.0.0 || ^17.0.0
-  bin:
-    graphql: dist/temp-bin.js
-  checksum: 10c0/edac04ef2ebc33cb6dcb07bbc6ae8c92ad952e3f830782e5dd89cb57f3ee93ed50f750c8c2c4636e1e9841eb6c4429892abbf22a85c34f900d0e6f0c74554047
+    graphql: ^16.11.0 || ^17.0.0
+  checksum: 10c0/cf78fcf4ac1c89f6d05667e60f16aa8fdda3a6cec55498f341315ecda91bac5439c1daa1892d0df288ffd7f838bf24bada6f71370df9fab504fcb79c836b02f1
   languageName: node
   linkType: hard
 
@@ -2498,13 +2495,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nullthrows@npm:^1.0.0":
-  version: 1.1.1
-  resolution: "nullthrows@npm:1.1.1"
-  checksum: 10c0/56f34bd7c3dcb3bd23481a277fa22918120459d3e9d95ca72976c72e9cac33a97483f0b95fc420e2eb546b9fe6db398273aba9a938650cdb8c98ee8f159dcb30
-  languageName: node
-  linkType: hard
-
 "object-assign@npm:^4.0.1":
   version: 4.1.1
   resolution: "object-assign@npm:4.1.1"
@@ -2719,7 +2709,7 @@ __metadata:
     "@types/react-dom": "npm:^19.0.0"
     eslint: "npm:^10.0.0"
     graphql: "npm:^16.0.0"
-    graphql-language-service: "npm:^5.2.0"
+    graphql-language-service: "npm:^6.0.0"
     jsdom: "npm:^29.0.0"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
@@ -3476,10 +3466,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vscode-languageserver-types@npm:^3.17.1":
-  version: 3.17.5
-  resolution: "vscode-languageserver-types@npm:3.17.5"
-  checksum: 10c0/1e1260de79a2cc8de3e46f2e0182cdc94a7eddab487db5a3bd4ee716f67728e685852707d72c059721ce500447be9a46764a04f0611e94e4321ffa088eef36f8
+"vscode-languageserver-types@npm:^3.18.5":
+  version: 3.18.5
+  resolution: "vscode-languageserver-types@npm:3.18.5"
+  checksum: 10c0/de783b4c3d22908e5e4b0434548aa7935771d2a2514f65706f7746b859fdd755ee8aedae020f81e8416c4a87f2b131d2b43124b9010baed957c4b4a661726cfa
   languageName: node
   linkType: hard
 
