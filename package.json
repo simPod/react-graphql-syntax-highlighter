@@ -1,51 +1,30 @@
 {
   "name": "react-graphql-syntax-highlighter",
-  "license": "MIT",
   "version": "0.1.0",
-  "type": "module",
   "description": "A React component for highlighting GraphQL syntax.",
+  "keywords": [
+    "gql",
+    "graphql",
+    "react"
+  ],
+  "homepage": "https://github.com/simPod/react-graphql-syntax-highlighter#readme",
+  "bugs": {
+    "url": "https://github.com/simPod/react-graphql-syntax-highlighter/issues"
+  },
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/simPod/react-graphql-syntax-highlighter.git"
   },
-  "scripts": {
-    "build": "tsup",
-    "lint": "eslint .",
-    "test": "vitest run"
-  },
-  "keywords": [
-    "graphql",
-    "react",
-    "gql"
+  "files": [
+    "dist"
   ],
-  "bugs": {
-    "url": "https://github.com/simPod/react-graphql-syntax-highlighter/issues"
-  },
-  "homepage": "https://github.com/simPod/react-graphql-syntax-highlighter#readme",
-  "peerDependencies": {
-    "graphql": "^16.0.0",
-    "react": "^18.0.0 || ^19.0.0"
-  },
-  "dependencies": {
-    "graphql-language-service": "^5.2.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^10.0.0",
-    "@testing-library/dom": "^10.0.0",
-    "@testing-library/jest-dom": "^6.0.0",
-    "@testing-library/react": "^16.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "eslint": "^10.0.0",
-    "graphql": "^16.0.0",
-    "jsdom": "^29.0.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.5.0",
-    "typescript-eslint": "^8.0.0",
-    "vitest": "^4.0.0"
-  },
+  "type": "module",
+  "sideEffects": [
+    "./dist/style.css"
+  ],
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -53,11 +32,38 @@
     },
     "./style.css": "./dist/style.css"
   },
-  "main": "dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "sideEffects": false,
-  "packageManager": "yarn@4.18.1"
+  "scripts": {
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "graphql-language-service": "^5.2.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/react": "^16.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^10.0.0",
+    "graphql": "^16.0.0",
+    "jsdom": "^29.0.0",
+    "oxfmt": "^0.79.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^8.3.8",
+    "vitest": "^4.1.0"
+  },
+  "peerDependencies": {
+    "graphql": "^16.0.0",
+    "react": "^18.0.0 || ^19.0.0"
+  },
+  "packageManager": "pnpm@10.34.9"
 }

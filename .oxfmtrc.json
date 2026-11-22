@@ -1,0 +1,4 @@
+{
+  "singleQuote": true,
+  "ignorePatterns": ["dist", "pnpm-lock.yaml"]
+}
