@@ -14,4 +14,4 @@ Use Vite library mode to build the ES module and extract the stylesheet. Keep Re
 
 ## Consequences
 
-The public imports do not change. The stylesheet needs a side-effects entry so bundlers keep explicit CSS imports. Development uses the pnpm version pinned in `package.json` on Node 20.19+, 22.13+, or 24.
+The public imports do not change. The stylesheet needs a side-effects entry so bundlers keep explicit CSS imports. Development uses the pnpm version pinned in `package.json` and the Node versions listed in the [development guide](../../README.md#development).
