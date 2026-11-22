@@ -47,6 +47,8 @@ Available properties: `--graphql-keyword`, `--graphql-definition`, `--graphql-pr
 
 Use Node 24.15 or later on the 24.x line, or Node 26, and the pnpm version in `package.json`.
 
+Type checking and declaration builds use TypeScript 7. ESLint uses the TypeScript 6 compatibility API until typescript-eslint supports the new API.
+
 ```sh
 pnpm install
 pnpm format
