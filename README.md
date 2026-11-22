@@ -8,6 +8,8 @@ A display-only React component that formats and highlights GraphQL. It renders a
 pnpm add react-graphql-syntax-highlighter graphql
 ```
 
+Use GraphQL 16.11 or later on the 16.x line, or GraphQL 17.x.
+
 ## Usage
 
 ```tsx
@@ -43,7 +45,7 @@ Available properties: `--graphql-keyword`, `--graphql-definition`, `--graphql-pr
 
 ## Development
 
-Use Node 22.13+, 24, or 26 and the pnpm version in `package.json`.
+Use Node 24 or 26 and the pnpm version in `package.json`.
 
 ```sh
 pnpm install
