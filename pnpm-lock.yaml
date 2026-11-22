@@ -177,7 +177,7 @@ importers:
     dependencies:
       graphql-language-service:
         specifier: ^6.0.0
-        version: 6.0.1(graphql@16.15.0)
+        version: 6.0.1(graphql@17.1.0)
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.0
@@ -201,8 +201,8 @@ importers:
         specifier: ^10.0.0
         version: 10.15.0
       graphql:
-        specifier: ^16.11.0
-        version: 16.15.0
+        specifier: ^17.0.0
+        version: 17.1.0
       jsdom:
         specifier: ^29.0.0
         version: 29.1.1
@@ -961,9 +961,9 @@ packages:
     peerDependencies:
       graphql: ^16.11.0 || ^17.0.0
 
-  graphql@16.15.0:
-    resolution: {integrity: sha512-32kz9FecohDiC/tgcViwnRXM7HFBVTPiW7pHO+DikKOI5KjhU/jNULOReXsrFqt2WAYbE9xFXsTffJw6iTO8qw==}
-    engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
+  graphql@17.1.0:
+    resolution: {integrity: sha512-JKCOa7rSQNrket/JFhuua86hljUO+IIpyUHfKxlKD6FEfbrLX8jc1FDrA0KPKI+s8OspBCF/5npYccAICHXPpQ==}
+    engines: {node: ^22.0.0 || ^24.0.0 || >=26.0.0}
 
   hashery@1.5.1:
     resolution: {integrity: sha512-iZyKG96/JwPz1N55vj2Ie2vXbhu440zfUfJvSwEqEbeLluk7NnapfGqa7LH0mOsnDxTF85Mx8/dyR6HfqcbmbQ==}
@@ -2079,13 +2079,13 @@ snapshots:
     dependencies:
       is-glob: 4.0.3
 
-  graphql-language-service@6.0.1(graphql@16.15.0):
+  graphql-language-service@6.0.1(graphql@17.1.0):
     dependencies:
       debounce-promise: 3.1.2
-      graphql: 16.15.0
+      graphql: 17.1.0
       vscode-languageserver-types: 3.18.6
 
-  graphql@16.15.0: {}
+  graphql@17.1.0: {}
 
   hashery@1.5.1:
     dependencies:
