@@ -15,14 +15,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node_version: [20, 22, 24]
+        node_version: [22, 24, 26]
     steps:
       - name: Checkout
         uses: actions/checkout@v7
       - name: Set up pnpm
         uses: pnpm/action-setup@v6
       - name: Use Node ${{matrix.node_version}}
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node_version }}
           cache: pnpm
