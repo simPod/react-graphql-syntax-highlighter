@@ -43,7 +43,7 @@ Available properties: `--graphql-keyword`, `--graphql-definition`, `--graphql-pr
 
 ## Development
 
-Use Node 22.13+, 24, or 26 and the pnpm version in `package.json`.
+Use Node 24 or 26 and the pnpm version in `package.json`.
 
 ```sh
 pnpm install
