@@ -47,7 +47,7 @@
     "@eslint/js": "^10.0.0",
     "@testing-library/dom": "^10.0.0",
     "@testing-library/react": "^16.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^26.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^10.0.0",
