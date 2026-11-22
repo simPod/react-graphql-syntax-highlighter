@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { cleanup, render } from '@testing-library/react';
 import { afterEach, it } from 'vitest';
-import { GraphQLCodeBlock } from '../index';
+import { GraphQLCodeBlock } from './index';
 
 afterEach(cleanup);
 

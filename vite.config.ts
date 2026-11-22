@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default defineConfig({
   build: {
@@ -14,5 +14,6 @@ export default defineConfig({
   },
   test: {
     environment: 'jsdom',
+    include: [...configDefaults.include, 'src/test.tsx'],
   },
 });
