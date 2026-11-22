@@ -1,39 +1,38 @@
 import { parse, print } from 'graphql';
 import type { ReactElement } from 'react';
-import { runParser } from './runParser';
+import { tokenize } from './tokenize';
 
 type Props = { className?: string; src: string };
 
-export const GraphQLCodeBlock = ({ className, src }: Props) => {
-  let formatted;
+function format(src: string) {
   try {
-    formatted = print(parse(src));
-  } catch (e) {
-    // eslint-disable-next-line no-console
-    console.error(e);
-    return <pre className={`${className ?? ''} GraphQLCodeBlock error`}>{src}</pre>;
+    return print(parse(src));
+  } catch {
+    return undefined;
   }
+}
 
-  const highlighted: ReactElement[][] = [];
-  const rowKeys: string[] = [];
-  runParser(formatted, (stream, _state, style, _rowIndex, newRow) => {
-    const current = stream.current();
-    const start = stream.getStartOfToken();
-    const pos = stream.getCurrentPosition();
-    if (newRow) {
-      rowKeys.push(current);
-      highlighted.push([]);
-    }
-    highlighted[highlighted.length - 1].push(
-      <span key={`${rowKeys.length}-${start}-${pos}`} className={style}>{current}</span>
-    );
-  });
+export const GraphQLCodeBlock = ({ className, src }: Props): ReactElement => {
+  const formatted = format(src);
+  const classes = [className, 'GraphQLCodeBlock', formatted === undefined && 'error']
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <div className={`${className ?? ''} GraphQLCodeBlock`}>{
-      highlighted.map((row, index) => {
-        return (<pre key={`query-row-${index}`}>{row}</pre>);
-      })
-    }</div>
+    <pre className={classes}>
+      <code>
+        {formatted === undefined
+          ? src
+          : Array.from(tokenize(formatted), ({ text, style }, index) =>
+              style ? (
+                <span key={index} className={style}>
+                  {text}
+                </span>
+              ) : (
+                text
+              ),
+            )}
+      </code>
+    </pre>
   );
 };

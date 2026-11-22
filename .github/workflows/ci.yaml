@@ -1,36 +1,40 @@
 name: CI
 
 on:
-    push:
-        branches:
-            - master
-    pull_request:
-        branches:
-            - master
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
-    test:
-        name: Testing on Node ${{matrix.node_version}}
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                node_version: [20, 22, 24]
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v7
-            - name: Enable Corepack
-              run: corepack enable
-            - name: Use Node ${{matrix.node_version}}
-              uses: actions/setup-node@v6
-              with:
-                  node-version: ${{ matrix.node_version }}
-                  cache: yarn
-            - name: Install Dependencies using Yarn
-              run: yarn install
-            - name: Lint
-              run: yarn lint
-            - name: Build
-              run: yarn build
-            - name: Test
-              run: yarn test
+  test:
+    name: Testing on Node ${{matrix.node_version}}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node_version: [20, 22, 24]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6
+      - name: Use Node ${{matrix.node_version}}
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ matrix.node_version }}
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check formatting
+        run: pnpm format:check
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Build
+        run: pnpm build
+      - name: Test
+        run: pnpm test

@@ -1,4 +1,3 @@
 dist
 node_modules
 tsconfig.tsbuildinfo
-.yarn/install-state.gz

@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "github>simPod/renovatebot-presets:ts-lib"
-  ],
+  "extends": ["github>simPod/renovatebot-presets:ts-lib"],
   "packageRules": [
     {
       "matchPackagePatterns": ["eslint", "typescript-eslint"],

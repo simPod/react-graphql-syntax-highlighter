@@ -1,44 +1,54 @@
-.GraphQLCodeBlock pre {
-    background: transparent;
-    background-color: transparent;
-    margin: 0;
-    padding: 0;
-    text-align: left;
+.GraphQLCodeBlock {
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  background: transparent;
+  font-family: ui-monospace, monospace;
+  line-height: 1.5;
+  text-align: left;
+  white-space: pre;
 }
 
-/* colors copied from graphiql */
-.GraphQLCodeBlock span.comment {
-    color: #999999;
+.GraphQLCodeBlock > code {
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  white-space: inherit;
 }
 
-.GraphQLCodeBlock span.number {
-    color: #2882F9;
+.GraphQLCodeBlock .number {
+  color: var(--graphql-number, light-dark(#175aaf, #82b5ff));
 }
 
-.GraphQLCodeBlock span.variable {
-    color: #397D13;
+.GraphQLCodeBlock .variable {
+  color: var(--graphql-variable, light-dark(#397117, #a8dc85));
 }
 
-.GraphQLCodeBlock span.atom {
-    color: #CA9800;
+.GraphQLCodeBlock :is(.atom, .builtin, .string-2) {
+  color: var(--graphql-atom, light-dark(#855b00, #f2c76e));
 }
 
-.GraphQLCodeBlock span.attribute {
-    color: #8B2BB9;
+.GraphQLCodeBlock :is(.attribute, .meta) {
+  color: var(--graphql-attribute, light-dark(#812ab0, #d7a5f6));
 }
 
-.GraphQLCodeBlock span.punctuation {
-    color: #555555;
+.GraphQLCodeBlock .punctuation {
+  color: var(--graphql-punctuation, light-dark(#555, #a8b2c1));
 }
 
-.GraphQLCodeBlock span.keyword {
-    color: #B11A04;
+.GraphQLCodeBlock .keyword {
+  color: var(--graphql-keyword, light-dark(#a82a1b, #ff9c89));
 }
 
-.GraphQLCodeBlock span.def {
-    color: #D2054E;
+.GraphQLCodeBlock .def {
+  color: var(--graphql-definition, light-dark(#b91954, #ff9bc1));
 }
 
-.GraphQLCodeBlock span.property {
-    color: #1F61A0;
+.GraphQLCodeBlock :is(.property, .qualifier) {
+  color: var(--graphql-property, light-dark(#1f61a0, #96cbff));
+}
+
+.GraphQLCodeBlock .string {
+  color: var(--graphql-string, light-dark(#146859, #85d6bf));
 }

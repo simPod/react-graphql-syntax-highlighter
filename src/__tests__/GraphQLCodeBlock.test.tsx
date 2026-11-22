@@ -1,55 +1,46 @@
-import { describe, expect, it, vi } from 'vitest';
-import { render } from '@testing-library/react';
-import '@testing-library/jest-dom/vitest';
+import assert from 'node:assert/strict';
+import { cleanup, render } from '@testing-library/react';
+import { afterEach, it } from 'vitest';
 import { GraphQLCodeBlock } from '../index';
 
-describe('GraphQLCodeBlock', () => {
-  it('renders a valid query with syntax highlighting', () => {
-    const { container } = render(<GraphQLCodeBlock src="{ hello }" />);
+afterEach(cleanup);
 
-    const div = container.querySelector('.GraphQLCodeBlock');
-    expect(div).toBeInTheDocument();
-    expect(div?.querySelectorAll('pre').length).toBeGreaterThan(0);
-    expect(div?.querySelectorAll('span').length).toBeGreaterThan(0);
-  });
+it('formats and highlights the query as one copyable code block', () => {
+  const src = `query Note{note(text:"""first
 
-  it('renders error state for invalid query', () => {
-    vi.spyOn(console, 'error').mockImplementation(() => {});
+last"""){id}}`;
 
-    const { container } = render(<GraphQLCodeBlock src="{ invalid ..." />);
+  const { container } = render(<GraphQLCodeBlock className="example" src={src} />);
+  const code = container.querySelector('pre.GraphQLCodeBlock.example > code');
 
-    const pre = container.querySelector('pre.error');
-    expect(pre).toBeInTheDocument();
-    expect(pre?.textContent).toBe('{ invalid ...');
+  assert(code);
+  assert.equal(container.querySelectorAll('pre').length, 1);
+  assert.equal(
+    code.textContent,
+    [
+      'query Note {',
+      '  note(text: """',
+      '  first',
+      '  ',
+      '  last',
+      '  """) {',
+      '    id',
+      '  }',
+      '}',
+    ].join('\n'),
+  );
+  assert.equal(code.querySelector('.keyword')?.textContent, 'query');
+  assert.equal(code.querySelector('.def')?.textContent, 'Note');
+  assert.equal(code.querySelector('.punctuation')?.textContent, '{');
+});
 
-    vi.restoreAllMocks();
-  });
+it('renders invalid GraphQL as plain text in the code block', () => {
+  const src = '{ invalid <tag>\n';
 
-  it('passes className to the container', () => {
-    const { container } = render(<GraphQLCodeBlock className="custom" src="{ hello }" />);
+  const { container } = render(<GraphQLCodeBlock className="example" src={src} />);
+  const code = container.querySelector('pre.GraphQLCodeBlock.example.error > code');
 
-    const div = container.querySelector('.custom.GraphQLCodeBlock');
-    expect(div).toBeInTheDocument();
-  });
-
-  it('formats the query via graphql print', () => {
-    const { container } = render(<GraphQLCodeBlock src="{hello{world}}" />);
-
-    const spans = container.querySelectorAll('span');
-    const text = Array.from(spans).map((s) => s.textContent).join('');
-    expect(text).toContain('hello');
-    expect(text).toContain('world');
-  });
-
-  it('passes className to error state', () => {
-    vi.spyOn(console, 'error').mockImplementation(() => {});
-
-    const { container } = render(<GraphQLCodeBlock className="my-class" src="not valid graphql {{{}}" />);
-
-    const pre = container.querySelector('pre.my-class');
-    expect(pre).toBeInTheDocument();
-    expect(pre).toHaveClass('error');
-
-    vi.restoreAllMocks();
-  });
+  assert(code);
+  assert.equal(code.textContent, src);
+  assert.equal(code.childElementCount, 0);
 });
