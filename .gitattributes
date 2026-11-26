@@ -1,0 +1,17 @@
+/* export-ignore
+/.github -export-ignore
+/.github/** -export-ignore
+/docs -export-ignore
+/docs/** -export-ignore
+/src -export-ignore
+/src/** -export-ignore
+/.gitignore -export-ignore
+/.oxfmtrc.json -export-ignore
+/README.md -export-ignore
+/eslint.config.js -export-ignore
+/package.json -export-ignore
+/pnpm-lock.yaml -export-ignore
+/renovate.json -export-ignore
+/tsconfig.build.json -export-ignore
+/tsconfig.json -export-ignore
+/vite.config.ts -export-ignore
